@@ -1,0 +1,68 @@
+﻿@model Spotify1.Models.Home
+@using(Html.BeginForm())
+{
+    <head>
+    <title>Spotify</title>
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href=
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+       
+        .head h2{
+            float: left;
+            color: grey;
+            padding-left: 20px;
+        }
+        label {
+            float: left;
+            line-height: 40px;
+        }
+          
+        span {
+            display: block;
+            overflow: hidden;
+            padding-left: 30px;
+            line-height: 40px;
+        }
+        .MainHead{
+            padding-top: 90px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <div class="head">
+        <h2>Add New Song</h2>
+    </div>
+    <div class="MainHead">
+       <form asp-controller="Home" asp-action="AddNewArtist" method="post">
+        <label for="Name">Artist Name</label>
+        <span style="padding-left: 95px;">
+            
+            @Html.TextBoxFor(a => a.AName )
+        </span>
+
+        <label for="DOB">Date of Birth</label>
+       <span style="padding-left: 95px;">
+     @*  <input type="date" id="a => a.dob">*@
+        @Html.TextBoxFor(a => a.dob )
+      </span > 
+
+        <label for="About">Bio</label>
+        <span style="padding-left: 145px;">
+            
+            @Html.TextBoxFor(a => a.bio )
+         </span>   
+         <button>Cancel</button>
+            <button type="submit">Submit</button>
+       </form>
+    </div>
+
+  
+
+
+</body>
+}

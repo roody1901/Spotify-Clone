@@ -1,0 +1,110 @@
+﻿@model Spotify1.Models.Home
+
+@using(Html.BeginForm())
+{
+    <head>
+    <title>Spotify</title>
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href=
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+       
+        .head h2{
+            float: left;
+            color: grey;
+            padding-left: 20px;
+        }
+        label {
+            float: left;
+            line-height: 40px;
+        }
+          
+        span {
+            display: block;
+            overflow: hidden;
+            padding-left: 30px;
+            line-height: 40px;
+        }
+        .MainHead{
+            padding-top: 90px;
+            padding-left: 20px;
+        }
+            .button {
+  background-color:lightgray; /* Green */
+  border: none;
+  color: white;
+  padding: 0px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+    margin-right: 5px;
+	cursor: pointer;
+	border-radius: 15px;
+
+}
+    </style>
+    <script>
+          $(document).ready(function () {
+            $("#Artist").CreateMultiCheckBox({ width: '230px', defaultText : 'Select Below', height:'250px' });
+        });
+
+        function AddArtist()
+        {
+           
+        window.open("AddArtist.html","Ratting","width=550,height=470,left=50,top=200,toolbar=0,status=0,");
+        }
+    </script>
+</head>
+<body>
+  
+    
+    <div class="head">
+        <h2>Add New Song</h2>
+    </div>
+    <div class="MainHead">
+       <form asp-controller="Home" asp-action="AddNewSong" method="post">
+        <label for="Song">Song</label>
+        <span style="padding-left: 95px;">
+            
+            @Html.TextBoxFor(a => a.Sname)
+        </span>
+
+        <label for="DOR">Date of Release</label>
+       <span>
+      
+            @Html.TextBoxFor(a => a.dor)
+      </span > 
+
+        <label for="Artwork">Artwork</label>
+        <span style="padding-left: 80px;">
+            <input type="file" id="Artwork">
+         </span>  
+
+        <label for="Artist">Artist</label>
+        <span style="padding-left: 90px;">
+          
+            <select name="Artist" id="Artist">
+                <option value="Arijit"></option>
+                <option value="Jubin">Jubin</option>
+                <option value="Justin">Justin</option>
+            </select>
+            
+            <a class = "button"  @Html.ActionLink("AddNewArtist","AddNewArtist","Home")></a>
+           
+         </span> 
+         <span style="padding-left: 130px;">
+            <button>Cancel</button>
+            <button type="submit">Submit</button>
+        </span>
+       
+       </form>
+    </div>
+
+  
+
+
+</body>
+}

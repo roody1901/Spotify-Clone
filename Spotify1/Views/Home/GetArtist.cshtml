@@ -1,0 +1,174 @@
+﻿@model IEnumerable<Spotify1.Models.Home>
+@using (Html.BeginForm())
+{
+    <head>
+    <title>Spotify</title>
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href=
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href=
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        
+        .head h2{
+            float: left;
+            color: grey;
+            padding-left: 20px;
+        }
+        .head .add{
+            padding: 25px 32px;;
+            text-align:right;         
+        }
+        .Main-Content table{
+        
+            width: 100%;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .Main-Content th{
+            background-color: rgb(126, 125, 125);
+            text-align: center;
+            color: white;
+            border: solid black;
+            border-width: 1px 0; 
+        }
+                .button {
+          background-color:lightgray; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin-bottom: 10px;
+            margin-right: 5px;
+	        cursor: pointer;
+	        border-radius: 15px;
+
+        }
+                *{
+            margin: 0;
+            padding: 0;
+        }
+        .rate {
+            float: left;
+            height: 20px;
+            padding: 0 10px;
+        }
+        .rate:not(:checked) > input {
+            position:absolute;
+            top:-9999px;
+        }
+        .rate:not(:checked) > label {
+            float:right;
+            width:1em;
+            overflow:hidden;
+            white-space:nowrap;
+            cursor:pointer;
+            font-size:18px;
+            color:#ccc;
+        }
+        .rate:not(:checked) > label:before {
+            content: '★ ';
+        }
+        .rate > input:checked ~ label {
+            color: #ffc700;    
+        }
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;  
+        }
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+
+        .Main-Content td{
+            text-align: center;
+        }
+        .Main-Content table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+    </style>
+</head>
+<body>
+  
+    
+    <div class="head">
+        <h2>Top 10 Songs</h2>
+        <div class="add">
+            <a class="button"  @Html.ActionLink("AddNewSong","AddNewSong","Home")> </a>
+            
+        </div>
+    </div>
+
+    <div class="Main-Content">
+   
+               <table>
+            <tr>
+                <th>Artwork</th>
+                <th>Song</th>
+                <th>Date of Release</th>
+                <th>Artist</th>
+                <th>Rating</th>
+            </tr>
+             @foreach (var item in Model)
+            {
+            <tr>
+                <td>Image</td>
+                <td>@Html.DisplayFor(modelItem => item.Sname)</td>
+                <td>@Html.DisplayFor(modelItem => item.dor)</td>
+                <td>@Html.DisplayFor(modelItem => item.AName)</td>
+                <td> <div class="rate">
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div></td>
+            </tr>
+            }
+        </table>  
+    </div>
+
+     <div class="Main-Content">
+        <h2 style="float: left;
+        color: grey;
+        padding-left: 20px;">Top 10 Songs</h2>
+        <table>
+            <tr>
+               
+                <th>Artist</th>
+                <th>Date of Birth</th>
+                <th>Song</th>
+            </tr>
+             @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.AName)</td>
+                <td>@Html.DisplayFor(modelItem => item.dob)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sname)</td>
+                
+            </tr>
+            }
+        </table>
+    </div>
+
+
+
+</body>
+}
+
+

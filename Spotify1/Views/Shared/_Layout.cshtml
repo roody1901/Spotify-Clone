@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Spotify</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .navbar{
+        background-color: grey;
+        overflow: hidden;
+        font-size: 25px;
+    }
+    .navbar a{
+        padding: 5px 56px ;
+        float: left;
+    }
+    .search-bar{
+        padding: 5px 16px ;
+        text-align: right;
+    }
+</style>
+</head>
+<body>
+    <header>
+<div class="navbar">
+    <a href="#">Home</a>
+    <div class="search-bar">
+        <form>
+            <input type="text" placeholder="Search" name="search">
+            <button>
+                <i class="fa fa-search" style="font-size: 15px;" >
+                </i>
+            </button>
+        </form>
+    </div>
+</div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Spotify1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
